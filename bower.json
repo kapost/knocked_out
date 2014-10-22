@@ -1,0 +1,37 @@
+{
+  "name": "knocked_out",
+  "version": "0.0.0",
+  "authors": [
+    "Raul E Rangel <Raul@kapost.com>"
+  ],
+  "description": "The VM layer between Knockout and Backbone",
+  "main": "app/assets/javascript/knocked_out.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "knockout",
+    "backbone",
+    "knockback",
+    "viewmodel",
+    "mvvm"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kapost/knocked-out",
+  "ignore": [
+    "**/.*",
+    "lib",
+    "Gemfile",
+    "Gemfile.lock",
+    "*.gemspec",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "~3.2.0",
+    "backbone": "~1.1.2"
+  }
+}
