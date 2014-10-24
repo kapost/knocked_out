@@ -152,6 +152,10 @@
       options = options || {};
       _.extend(this, _.pick(options, viewModelOptions));
 
+      // Setup properties
+      var properties = _.result(this, 'properties');
+      _.defaults(this, _.pick(options, _.keys(properties)), properties);
+
       this._subscriptions = {};
 
       var observables = _.defaults(_.result(this, 'observables') || {}, {model: null, collection: null});
@@ -173,6 +177,7 @@
       // A list of subscriptions to release when the ViewModel is destroyed
       _subscriptions: null,
 
+      properties: null,
       observables: null,
       attributes: null,
       computeds: null,
