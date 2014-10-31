@@ -160,7 +160,7 @@
 
       var observables = _.defaults(_.result(this, 'observables') || {}, {model: null, collection: null});
       observables = _.defaults(_.pick(options, _.keys(observables)), observables);
-      this.createObservables(observables);
+      this.createObservables(observables, options);
 
       this.observeModel('model');
       this.observeCollection('collection');
@@ -213,7 +213,7 @@
       //     hello with the value 'world'
       // If the value is a function it will be evaluated
       // in the context of the View Model
-      createObservables: function(observables) {
+      createObservables: function(observables, params) {
         if (!observables) return this;
 
         for (var key in observables) {
@@ -223,7 +223,7 @@
             this[key] = value;
           } else {
             if (_.isFunction(value))
-              value = value.call(this);
+              value = value.call(this, params);
 
             if (ko.isObservable(value)) {
               this[key] = value;
