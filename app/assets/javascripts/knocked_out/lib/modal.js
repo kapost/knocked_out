@@ -43,12 +43,12 @@
       var e;
 
       if (this.isShown) {
-         e = $.Event('shown.modal', {});
+        e = $.Event('shown.modal', {});
       } else {
         e = $.Event('hidden.modal', {});
         this.hideModal();
       }
-      
+
       this.$element.trigger(e);
     }, this);
 
@@ -74,7 +74,8 @@
   };
 
   Modal.prototype.show = function () {
-    var e = $.Event('show.modal', {});
+    var e = $.Event('show.modal', {}),
+        self = this;
 
     this.$element.trigger(e);
 
@@ -97,6 +98,10 @@
     this.$modal.addClass('show-modal'); // Start animation
 
     this.enforceFocus();
+
+    this.$modal.find('.js-close-modal').on('click', function(){
+      self.$modal.trigger('click.modal');
+    });
 
     return true;
   };
