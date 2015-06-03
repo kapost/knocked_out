@@ -86,9 +86,10 @@ define(["underscore", "knockout", "query-string"], function(_, ko, QueryString) 
       return this.performUrlMatch();
     },
     performUrlMatch: function() {
-      var match, name, path, queryParams, queryString, route, _ref;
+      var match, name, path, queryParams, queryString, anchorHash, route, _ref;
       path = window.location.pathname;
       queryString = window.location.search;
+      anchorHash = window.location.hash;
       queryParams = queryString ? QueryString.parse(queryString) : null;
       _ref = this.routes;
       for (name in _ref) {
@@ -97,12 +98,12 @@ define(["underscore", "knockout", "query-string"], function(_, ko, QueryString) 
         if (match) {
           return this.navigateToRoute(route, match, {
             update: false
-          });
+          }, anchorHash);
         }
       }
       return false;
     },
-    navigateToRoute: function(route, params, options) {
+    navigateToRoute: function(route, params, options, anchorHash) {
       options || (options = {});
       params = route.navigate(params);
       if (options.update !== false) {
@@ -113,7 +114,8 @@ define(["underscore", "knockout", "query-string"], function(_, ko, QueryString) 
         }
       }
       params = _.defaults({}, params, {
-        router: this
+        router: this,
+        anchorHash: anchorHash
       });
       if (options.navigate !== false) {
         this.component({
