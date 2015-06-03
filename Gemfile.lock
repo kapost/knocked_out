@@ -6,6 +6,11 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.9.1.1)
+    execjs (2.5.2)
     rake (10.3.2)
 
 PLATFORMS
@@ -13,5 +18,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.7)
+  coffee-script
   knocked_out!
   rake (~> 10.0)
+
+BUNDLED WITH
+   1.10.2
